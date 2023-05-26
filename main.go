@@ -24,6 +24,10 @@ func main() {
 	defer db.Close()
 
 	dupesArrays := ExecutionDupes(db)
+	if len(dupesArrays) < 1 {
+		fmt.Println("No duplicated rows")
+		os.Exit(0)
+	}
 	for _, dupe := range dupesArrays {
 		successDelete := DeleteRow(db, &dupe)
 		if successDelete {
