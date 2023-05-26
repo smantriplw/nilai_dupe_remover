@@ -1,0 +1,1 @@
+Just simple tool to remove any duplicated rows, this tool is a solution for previous issue (https://github.com/smantriplw/ppdb-laravel/commit/cf1ddea595ce979793108649fb641a26185e9f66)
