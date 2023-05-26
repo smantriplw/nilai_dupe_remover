@@ -20,6 +20,16 @@ func isExistOnArray(arr []string, id string) bool {
 	return false
 }
 
+func DeleteRow(db *sql.DB, dupe *DupeRow) bool {
+	_, err := db.Exec(DEL_NILAI_SQL, dupe.RowId)
+	if err != nil {
+		fmt.Println(err.Error())
+		return false
+	}
+
+	return true
+}
+
 func ExecutionDupes(db *sql.DB) []DupeRow {
 	lists := []string{}
 	dupes := []DupeRow{}

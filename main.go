@@ -24,7 +24,12 @@ func main() {
 	defer db.Close()
 
 	dupesArrays := ExecutionDupes(db)
-	fmt.Println(dupesArrays)
-
-	// later
+	for _, dupe := range dupesArrays {
+		successDelete := DeleteRow(db, &dupe)
+		if successDelete {
+			fmt.Printf("Sukses menghapus %d dari %s - %s\n", dupe.RowId, dupe.Row.ArchiveID, dupe.Row.Lesson)
+		} else {
+			fmt.Printf("Gagal menghapus %d dari %s - %s\n", dupe.RowId, dupe.Row.ArchiveID, dupe.Row.Lesson)
+		}
+	}
 }
